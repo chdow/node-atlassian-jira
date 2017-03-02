@@ -46,7 +46,7 @@ class Jira
 
     options =
       host: @host
-      path: "#{@context}/rest/api/#{@version}/#{api}#{params}"
+      path: "#{@context}/#{api}#{params}"
       method: method
       auth: "#{@username}:#{@password}"
       headers:
@@ -54,9 +54,6 @@ class Jira
         'Content-Length': payloadString.length
 
     req = http.request options, (res) ->
-
-      console.log options.path
-      console.log payloadString
 
       res.setEncoding 'utf8'
       response = ''
